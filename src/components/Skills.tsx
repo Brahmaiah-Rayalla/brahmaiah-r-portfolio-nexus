@@ -5,16 +5,16 @@ const skillCategories = [
   {
     title: "Cloud Platforms",
     skills: [
-      { name: "Google Cloud Platform", level: 90 },
+      { name: "Google Cloud Platform", level: 95 },
       { name: "AWS", level: 85 },
-      { name: "Pivotal Cloud Foundry", level: 88 }
+      { name: "Pivotal Cloud Foundry", level: 90 }
     ]
   },
   {
     title: "Containerization",
     skills: [
       { name: "OpenShift", level: 92 },
-      { name: "Kubernetes", level: 88 },
+      { name: "Kubernetes", level: 90 },
       { name: "Docker", level: 90 }
     ]
   },
@@ -22,16 +22,36 @@ const skillCategories = [
     title: "Java & Frameworks",
     skills: [
       { name: "Spring Boot", level: 95 },
-      { name: "Hibernate", level: 90 },
-      { name: "Spring Batch", level: 88 }
+      { name: "Hibernate", level: 92 },
+      { name: "Spring Batch", level: 90 },
+      { name: "Spring Integration", level: 88 }
     ]
   },
   {
-    title: "DevOps & Tools",
+    title: "Security & Observability",
     skills: [
-      { name: "Jenkins", level: 85 },
-      { name: "BlazeMeter", level: 80 },
-      { name: "Splunk", level: 75 }
+      { name: "HashiCorp Vault", level: 85 },
+      { name: "Splunk Observability", level: 88 },
+      { name: "PINGFederate", level: 82 },
+      { name: "Elastic APM", level: 85 }
+    ]
+  },
+  {
+    title: "DevOps & CI/CD",
+    skills: [
+      { name: "Jenkins", level: 90 },
+      { name: "Bamboo", level: 85 },
+      { name: "Harness", level: 80 },
+      { name: "BlazeMeter", level: 88 }
+    ]
+  },
+  {
+    title: "Database & Tools",
+    skills: [
+      { name: "Liquibase", level: 88 },
+      { name: "JMeter", level: 90 },
+      { name: "JProfiler", level: 85 },
+      { name: "Apache MQ", level: 87 }
     ]
   }
 ];
@@ -45,7 +65,7 @@ export const Skills = () => {
         Skills & Technologies
       </h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {skillCategories.map((category, categoryIndex) => (
           <div key={category.title} className="bg-gradient-to-br from-[#1a1a2e]/50 to-[#16213e]/50 p-6 rounded-2xl border border-[#00BFFF]/20 hover:border-[#8A2BE2]/50 transition-all duration-300">
             <h3 className="text-xl font-semibold mb-6 text-[#00BFFF]">{category.title}</h3>
@@ -58,8 +78,8 @@ export const Skills = () => {
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-300">{skill.name}</span>
-                    <span className="text-[#8A2BE2]">{skill.level}%</span>
+                    <span className="text-gray-300 text-sm">{skill.name}</span>
+                    <span className="text-[#8A2BE2] text-sm">{skill.level}%</span>
                   </div>
                   <div className="w-full bg-gray-700 rounded-full h-2">
                     <div
