@@ -3,6 +3,30 @@ import { Button } from "@/components/ui/button";
 import { Download, Mail } from "lucide-react";
 
 export const Hero = () => {
+  const handleDownloadResume = () => {
+    // Create a temporary link element for download
+    const link = document.createElement('a');
+    link.href = '#'; // In a real app, this would be the actual resume URL
+    link.download = 'Brahmaiah_R_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Show feedback to user
+    console.log('Resume download initiated');
+  };
+
+  const handleContactClick = () => {
+    // Smooth scroll to contact section
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
@@ -42,6 +66,7 @@ export const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg" 
+            onClick={handleDownloadResume}
             className="bg-gradient-to-r from-[#00BFFF] to-[#8A2BE2] hover:from-[#8A2BE2] hover:to-[#00BFFF] text-white border-0 shadow-[0_0_20px_rgba(0,191,255,0.5)] hover:shadow-[0_0_30px_rgba(138,43,226,0.7)] transition-all duration-300"
           >
             <Download className="w-5 h-5 mr-2" />
@@ -50,6 +75,7 @@ export const Hero = () => {
           <Button 
             size="lg" 
             variant="outline" 
+            onClick={handleContactClick}
             className="border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-[#121212] shadow-[0_0_20px_rgba(0,191,255,0.3)] transition-all duration-300"
           >
             <Mail className="w-5 h-5 mr-2" />
@@ -58,7 +84,15 @@ export const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+          onClick={() => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
           <div className="w-6 h-10 border-2 border-[#00BFFF] rounded-full relative">
             <div className="w-1 h-3 bg-[#00BFFF] rounded-full absolute left-1/2 top-2 transform -translate-x-1/2 animate-pulse"></div>
           </div>

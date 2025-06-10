@@ -18,8 +18,13 @@ const awards = [
 ];
 
 export const Awards = () => {
+  const handleAwardClick = (award: typeof awards[0]) => {
+    // In a real app, this could show detailed information about the award
+    alert(`${award.title} (${award.year}): ${award.description}`);
+  };
+
   return (
-    <section className="py-20 px-6 max-w-6xl mx-auto">
+    <section id="awards" className="py-20 px-6 max-w-6xl mx-auto">
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-[#00BFFF] to-[#8A2BE2] bg-clip-text text-transparent">
         Awards & Recognition
       </h2>
@@ -27,8 +32,11 @@ export const Awards = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {awards.map((award, index) => (
           <div key={index} className="group">
-            <div className="bg-gradient-to-br from-[#1a1a2e]/50 to-[#16213e]/50 p-6 rounded-2xl border border-[#00BFFF]/20 hover:border-[#8A2BE2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,191,255,0.2)] text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#00BFFF] to-[#8A2BE2] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,191,255,0.3)]">
+            <div 
+              className="bg-gradient-to-br from-[#1a1a2e]/50 to-[#16213e]/50 p-6 rounded-2xl border border-[#00BFFF]/20 hover:border-[#8A2BE2]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,191,255,0.2)] text-center cursor-pointer"
+              onClick={() => handleAwardClick(award)}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#00BFFF] to-[#8A2BE2] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,191,255,0.3)] group-hover:scale-110 transition-transform duration-300">
                 <div className="text-2xl">🏆</div>
               </div>
               <h3 className="text-lg font-semibold text-[#00BFFF] mb-2">{award.title}</h3>
